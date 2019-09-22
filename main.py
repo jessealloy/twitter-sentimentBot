@@ -1,11 +1,17 @@
 import twitter
 from textblob import TextBlob as tb
+from setUp import *
+from getReplies import *
 
-api = twitter.Api(consumer_key="d28kNSvpJzRGSnyMIVyGJyDBG",
-                  consumer_secret="Y5Fq7VaeQLJ8FIBpxmly979fygklL4etUQZD14O9mUUebJIXjg",
-                  access_token_key="2194488412-keCEXYHHWTYkSkzWmnEMkP8bEo6GxDNPOFAQEEv",
-                  access_token_secret="Fu33eGGRZvDllkV1nelQi0LEYuW1kks7zc4VouJ0xvuck")
+def main():
+    api,dictionary = setUp()
+    print("Please select which user you are curious about by pasting the name into this input: ")
+    for i in dictionary.keys():
+        print(i)
+    selection = input("selection: ")
+    replies = getReplies(dictionary.get(selection))
+    for i in replies:
+        print(i)
 
-statuses = api.GetUserTimeline(25073877)
-for i in statuses:
-    print(tb(i.text).sentiment)
+if __name__ == "__main__":
+    main()
