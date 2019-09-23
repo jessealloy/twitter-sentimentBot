@@ -1,6 +1,8 @@
 import twitter
+import json
 
 def getReplies(api,user):
-    api.GetUser(user)
-    replies = api.getReplies()
+    userObj = api.GetUser(user)
+    replies = api.GetReplies(user)
+    print(replies)
     return replies
